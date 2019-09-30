@@ -1,0 +1,2 @@
+export GS_WEBAPI="https://script.google.com/macros/s/AKfycbzA08Ha6VghNqR9DH-AsF7YG_6VhDaei2pXN6GDCihe7xXrHEs/exec"
+

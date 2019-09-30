@@ -1,0 +1,466 @@
+[
+    {
+        "id": "684c9386.a7d20c",
+        "type": "tab",
+        "label": "node-red からの操作",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9255658.06fcf98",
+        "type": "tab",
+        "label": "m5stackのボタン押下をgooglスプレッドに記録",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "c3d94e06.b5fda",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED ダッシュボード",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "YYYY/MM/DD",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "54d05001.fdde4",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "9e5b4be8.90f438",
+        "type": "inject",
+        "z": "684c9386.a7d20c",
+        "name": "red 255,0,0",
+        "topic": "",
+        "payload": "{\"led\":1,\"r\":255,\"g\":0,\"b\":0,\"message\":\"red\"}",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "1e3105aa.56c53a"
+            ]
+        ]
+    },
+    {
+        "id": "1e3105aa.56c53a",
+        "type": "mqtt out",
+        "z": "684c9386.a7d20c",
+        "name": "",
+        "topic": "/sub/M5Stack",
+        "qos": "",
+        "retain": "",
+        "broker": "54d05001.fdde4",
+        "x": 390,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "e9f1eed3.4dcf5",
+        "type": "inject",
+        "z": "684c9386.a7d20c",
+        "name": "blue 0,0,255",
+        "topic": "",
+        "payload": "{\"led\":1,\"r\":0,\"g\":0,\"b\":255,\"message\":\"blue\"}",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "1e3105aa.56c53a"
+            ]
+        ]
+    },
+    {
+        "id": "85481ee5.8bd46",
+        "type": "inject",
+        "z": "684c9386.a7d20c",
+        "name": "green 0,255,0",
+        "topic": "",
+        "payload": "{\"led\":1,\"r\":0,\"g\":255,\"b\":0,\"message\":\"green\"}",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 150,
+        "y": 260,
+        "wires": [
+            [
+                "1e3105aa.56c53a"
+            ]
+        ]
+    },
+    {
+        "id": "a71c7997.a46338",
+        "type": "inject",
+        "z": "684c9386.a7d20c",
+        "name": "off",
+        "topic": "",
+        "payload": "{\"led\":0,\"r\":0,\"g\":0,\"b\":0,\"message\":\"close\"}",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 170,
+        "y": 340,
+        "wires": [
+            [
+                "1e3105aa.56c53a"
+            ]
+        ]
+    },
+    {
+        "id": "7be614b3.e8df6c",
+        "type": "mqtt in",
+        "z": "684c9386.a7d20c",
+        "name": "",
+        "topic": "/pub/M5Stack",
+        "qos": "2",
+        "broker": "54d05001.fdde4",
+        "x": 110,
+        "y": 460,
+        "wires": [
+            [
+                "41db0d3b.0041e4"
+            ]
+        ]
+    },
+    {
+        "id": "41db0d3b.0041e4",
+        "type": "debug",
+        "z": "684c9386.a7d20c",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 330,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "6452095e.900428",
+        "type": "debug",
+        "z": "9255658.06fcf98",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 470,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "c3c4ad1a.f9c44",
+        "type": "mosca in",
+        "z": "9255658.06fcf98",
+        "mqtt_port": 1883,
+        "mqtt_ws_port": 8080,
+        "name": "",
+        "username": "",
+        "password": "",
+        "dburl": "",
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "6452095e.900428"
+            ]
+        ]
+    },
+    {
+        "id": "ec3d6b6f.484e78",
+        "type": "comment",
+        "z": "9255658.06fcf98",
+        "name": "メモ",
+        "info": "\nmessage breaker として Mosca を node-red 中で起動してます。\nmosca を使わず、別ターミナルで mosquitto を起動させてもよいです。\n\ngoogle spred シート側の準備は以下を参照してください。\n\n- [http://jellyware.jp/kurage/raspi/google_spreadsheet.html]()\nラズパイからGoogleスプレッドシートへ送信\n\n\nTODO:\n\nウェブアプリケーションの URL を環境変数に設定してから\nnode-red を起動させるようにする。\n\n`$ export GS_WEBAPI=\"xxx\"`\n\nnode-red フロー定義に直接 URL を記載しないようにするため。\n",
+        "x": 90,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "6b95d917.654d38",
+        "type": "http request",
+        "z": "9255658.06fcf98",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "https://script.google.com/macros/s/AKfycbzw-qxLkKzXnZI8z-YCsVAJSdVrXgXklF6l7vJh4tqe9iVCzzz00/exec?data1={{payload.button}}",
+        "tls": "",
+        "proxy": "",
+        "authType": "",
+        "x": 690,
+        "y": 260,
+        "wires": [
+            [
+                "e44024ce.45e648"
+            ]
+        ]
+    },
+    {
+        "id": "e44024ce.45e648",
+        "type": "debug",
+        "z": "9255658.06fcf98",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 730,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "4c4fd50.889ff2c",
+        "type": "mqtt in",
+        "z": "9255658.06fcf98",
+        "name": "",
+        "topic": "/pub/M5Stack",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "54d05001.fdde4",
+        "x": 90,
+        "y": 260,
+        "wires": [
+            [
+                "c85db7e9.920dc8"
+            ]
+        ]
+    },
+    {
+        "id": "a3018c73.efa8e",
+        "type": "debug",
+        "z": "9255658.06fcf98",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 510,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "c85db7e9.920dc8",
+        "type": "json",
+        "z": "9255658.06fcf98",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 230,
+        "y": 260,
+        "wires": [
+            [
+                "6286fd37.485be4",
+                "fca8f327.7913e"
+            ]
+        ]
+    },
+    {
+        "id": "6286fd37.485be4",
+        "type": "debug",
+        "z": "9255658.06fcf98",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 290,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "fca8f327.7913e",
+        "type": "switch",
+        "z": "9255658.06fcf98",
+        "name": "button event?",
+        "property": "payload.button",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nempty"
+            },
+            {
+                "t": "empty"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 400,
+        "y": 260,
+        "wires": [
+            [
+                "6b95d917.654d38",
+                "a3018c73.efa8e"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2e72003c.8ec62",
+        "type": "change",
+        "z": "9255658.06fcf98",
+        "name": "env[GS_WEBAPI]",
+        "rules": [
+            {
+                "t": "set",
+                "p": "URL",
+                "pt": "msg",
+                "to": "GS_WEBAPI",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 180,
+        "wires": [
+            [
+                "40cf7641.f1fa48"
+            ]
+        ]
+    },
+    {
+        "id": "40cf7641.f1fa48",
+        "type": "debug",
+        "z": "9255658.06fcf98",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "url",
+        "targetType": "msg",
+        "x": 660,
+        "y": 180,
+        "wires": []
+    }
+]
